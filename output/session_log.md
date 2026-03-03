@@ -33,3 +33,17 @@
 **Star table for Health Score**: `prod.master_insight.periods_monthly_employees_agg` — contains pre-computed monthly metrics for attrition, tenure, demographics, hiring, and exits at client/company/department level across 26 months and 1,477 clients.
 
 **Ready for**: Session 1.5 (Gap Analysis & Pillar Confirmation)
+
+---
+
+## Session 1.5 Handoff
+
+**Date**: 2026-03-03
+**Pillars assessed**: 6
+**Fully supported**: Retention Health, Compensation Equity, Hiring Momentum, Workforce Stability
+**Partially supported**: Absence Rate (renamed from Engagement & Absence — no engagement survey data, leave data only; 88.1% company coverage), Performance Distribution (93.4% companies have some ratings but only 41.5% of employees rated; 776 companies with >50% coverage)
+**Not supported**: None dropped entirely
+**New pillars discovered**: Internal Mobility (recommend merge into Workforce Stability), Workforce Demographics (recommend as dashboard enrichment only, not scored), Overtime Patterns (62.2% coverage too low for pillar)
+**Data requests generated**: 1 (Performance rating clarification)
+**Document location**: output/pillar_recommendations.md
+**Status**: AWAITING HUMAN APPROVAL — do not start Session 2
