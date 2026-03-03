@@ -1,0 +1,16 @@
+-- Session 1: Cross-Table Relationship Validation
+-- Executed: 2026-03-02
+
+-- Key relationships identified through column name matching and schema analysis:
+--
+-- 1. raw_hr.employees.hrEmployeeId + database → raw_hr.salaries.hrEmployeeSalaryEmployeeId + database
+-- 2. raw_hr.employees.hrEmployeeId + database → raw_hr.leaves.hrLeaveEmployeeId + database
+-- 3. raw_hr.employees.hrEmployeeId + database → raw_hr.employee_movements.hrEmployeeMovementEmployeeId + database
+-- 4. raw_hr.employees.hrEmployeeId + database → raw_hr.overtime.hrOvertimeEmployeeId + database
+-- 5. raw_hr.employees.hrEmployeeDepartmentId + database → raw_hr.departments.hrDepartmentId + database
+-- 6. curated_insight.dim_hr_employees.employee_database_key → dim_hr_employee_movements.employee_database_key
+-- 7. curated_insight.dim_hr_employees.client_id → dim_hr_companies.client_id
+-- 8. master_insight.periods_monthly_employees_agg.client_id → curated_requests.company_attrition_rates.hr_client_id
+--
+-- NOTE: Within raw_hr tables, the `database` column (company key) is required
+-- for all joins because IDs are only unique within a single company database.

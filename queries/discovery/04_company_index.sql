@@ -1,0 +1,13 @@
+-- Session 1: Company Index
+-- Executed: 2026-03-02
+
+-- Total distinct companies across key tables
+-- raw_hr.employees:          2,216 companies
+-- raw_hr.salaries:           1,927 companies (87.0% coverage)
+-- raw_hr.leaves:             1,649 companies (74.4% coverage)
+-- raw_hr.employee_movements: 1,846 companies (83.3% coverage)
+-- raw_hr.overtime:           1,378 companies (62.2% coverage)
+-- curated_insight.dim_hr_employees: 1,515 clients / 1,509 databases
+-- master_insight.periods_monthly_employees_agg: 1,477 clients / 564 companies
+-- curated_requests.company_attrition_rates: 1,979 clients / 672 companies
+-- curated_insight.dim_hr_companies: 8,670 client-company combinations
