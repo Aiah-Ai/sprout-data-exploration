@@ -20,6 +20,30 @@ frameworks — not from this specific dataset. This session determines:
 3. What's missing and whether it's recoverable
 4. The final approved pillar set that Sessions 2–5 will be built on
 
+### The Six Default Pillars
+
+These are the starting assumptions to validate against the actual data:
+
+| # | Pillar | What it measures |
+|---|---|---|
+| 1 | Retention Health | Attrition rate vs. peer benchmark |
+| 2 | Compensation Equity | Pay distribution fairness and band utilization |
+| 3 | Hiring Momentum | Hiring velocity and time-to-fill trends |
+| 4 | Performance Distribution | Rating curve health, high performer concentration |
+| 5 | Workforce Stability | Tenure distribution, org depth, span of control |
+| 6 | Engagement & Absence | Absence rates, engagement scores if available |
+
+Assess each of these against the schema map. Some may be dropped, merged, or
+replaced based on what the data actually supports.
+
+### How to Execute SQL
+
+Any validation queries should be run via the Databricks CLI:
+
+```bash
+databricks sql --query "YOUR SQL HERE"
+```
+
 ---
 
 ## Default Pillar Checklist

@@ -17,6 +17,43 @@ Before starting:
 2. Read `output/session_log.md` — Session 2 handoff
 3. Read `output/pillar_recommendations.md` — confirmed pillar set
 
+### Prerequisite Validation
+
+Check these before doing any work:
+- `output/metrics.md` exists and contains at least one pillar section
+- `output/pillar_recommendations.md` shows APPROVED status
+- Session 2 handoff exists in `output/session_log.md`
+
+If any check fails, print a clear error (e.g., "STOP: output/metrics.md not found —
+run Session 2 first.") and do not proceed.
+
+### How to Execute SQL
+
+If any SQL queries are needed (e.g., to pull supplementary data), use the
+Databricks CLI:
+
+```bash
+databricks sql --query "YOUR SQL HERE"
+```
+
+---
+
+## Bundled Scripts
+
+This skill includes a reusable scoring library at `scripts/scoring.py` (relative
+to this skill directory). It contains tested implementations of:
+
+- `percentile_normalize()` — convert raw metrics to 0-100 percentile scores
+- `compute_pillar_score()` — average normalized metrics within a pillar
+- `calibrate_weights()` — variance-based weight calibration with floor/ceiling
+- `compute_health_score()` — weighted sum of pillar scores
+- `assign_ranks()` — rank, quartile, and peer benchmark calculation
+- `assign_badges()` — badge criteria evaluation (template — adapt to actual metrics)
+
+When building `models/health_score_engine.py`, copy and adapt these functions
+rather than writing from scratch. The bundled code handles edge cases like ties
+in percentile ranking, missing pillar data, and weight re-normalization.
+
 ---
 
 ## Step 1: Implement the Scoring Engine

@@ -19,6 +19,16 @@ Before starting:
 4. Read `output/session_log.md` — Session 4 handoff
 5. Read `output/score_weights.md` — weight explanations
 
+### Prerequisite Validation
+
+Check these before doing any work:
+- `output/scores_anonymized.csv` exists and contains scored data
+- `output/predictions_anonymized.json` exists and contains prediction data
+- Session 4 handoff exists in `output/session_log.md`
+
+If any check fails, print a clear error (e.g., "STOP: output/scores_anonymized.csv
+not found — run Session 3 first.") and do not proceed.
+
 ---
 
 ## Technical Requirements

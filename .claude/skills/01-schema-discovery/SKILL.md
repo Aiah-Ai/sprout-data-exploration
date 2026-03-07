@@ -10,6 +10,29 @@ what it looks like. No analysis happens here — only discovery and documentatio
 
 ---
 
+## How to Execute SQL
+
+All SQL queries should be executed via the Databricks CLI:
+
+```bash
+databricks sql --query "YOUR SQL HERE"
+```
+
+For multi-line queries, use a heredoc:
+
+```bash
+databricks sql --query "$(cat <<'SQL'
+SELECT
+  company_id,
+  COUNT(*) AS total
+FROM some_table
+GROUP BY company_id
+SQL
+)"
+```
+
+---
+
 ## Step 1: Catalog → Schema → Table Inventory
 
 Enumerate every object in the warehouse:

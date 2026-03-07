@@ -19,6 +19,41 @@ Before starting:
 3. Read `output/session_log.md` — Session 3 handoff
 4. Assess data availability: how many time periods exist? (< 3 periods = very limited)
 
+### Prerequisite Validation
+
+Check these before doing any work:
+- `output/scores.csv` exists and contains scored company data
+- `output/metrics.md` exists and contains pillar metrics
+- Session 3 handoff exists in `output/session_log.md`
+
+If any check fails, print a clear error (e.g., "STOP: output/scores.csv not found —
+run Session 3 first.") and do not proceed.
+
+### How to Execute SQL
+
+If supplementary data queries are needed, use the Databricks CLI:
+
+```bash
+databricks sql --query "YOUR SQL HERE"
+```
+
+---
+
+## Bundled Scripts
+
+This skill includes a reusable prediction library at `scripts/prediction_utils.py`
+(relative to this skill directory). It contains tested implementations of:
+
+- `classify_attrition_risk()` — multi-factor risk scoring with explainable factors
+- `forecast_health_score()` — linear trend extrapolation with confidence bands
+- `flag_declining_pillar()` — consecutive decline and sharp drop detection
+- `project_headcount()` — linear headcount projection with volatility bands
+
+When building the model files in `models/`, copy and adapt these functions rather
+than writing from scratch. They already handle data availability tiers (the
+approach adapts based on how many time periods exist) and produce the
+interpretable output format required for the dashboard.
+
 ---
 
 ## Model Priority Order
