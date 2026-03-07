@@ -45,6 +45,29 @@ for a model — a missing prediction is better than a misleading one.
 - Compensation equity score (low pay equity → higher attrition risk)
 - Hiring momentum (high hiring + high attrition = churn problem)
 
+**Reference implementation**: See the [Gian dela Rama Capstone](https://github.com/giandlr/Gian_dela_Rama_Capstone)
+(cloned locally at `gian_attrition_prediction/`). This is an AI/ML capstone project
+that built an employee attrition classifier on an IBM-style HR dataset. Key takeaways
+to adapt for our multi-company Databricks context:
+
+- **Feature engineering patterns worth adapting**:
+  - `TenureRatio` = YearsAtCompany / (TotalWorkingYears + 1)
+  - `PromotionRate` = YearsAtCompany / (YearsSinceLastPromotion + 1)
+  - `IncomePerYearExp` = MonthlyIncome / (TotalWorkingYears + 1)
+  - `YearsPerCompany` = TotalWorkingYears / (NumCompaniesWorked + 1)
+  - `OverallSatisfaction` = mean(EnvironmentSatisfaction, JobSatisfaction, WorkLifeBalance)
+  - Binary flags: `HighCommute`, `LowSatisfaction`, `FrequentTraveler`, `HasStockOption`
+- **Model comparison approach**: Compared 6 classifiers (Random Forest, Gradient
+  Boosting, SVM, Decision Tree, KNN, Logistic Regression) using stratified
+  cross-validation. Random Forest won with 97.4% accuracy / 0.987 AUC-ROC.
+- **Output format**: Per-employee attrition probability + risk category (Low/High)
+  — maps well to our per-company risk tier output.
+
+**What does NOT transfer** (build from scratch instead):
+- The saved `.pkl` model — trained on different schema/features, single-company data
+- Single-company design — our models must work cross-company with benchmarking
+- No time dimension — the capstone used a static snapshot; we need temporal awareness
+
 **Output**: Risk score 0–100, risk tier (Low / Moderate / Elevated / Critical),
 top 3 contributing factors with plain-English explanations.
 
